@@ -97,65 +97,67 @@ const Timer: React.FC = () => {
   };
 
   return (
-    <div className="space-y-4">
-      <div className="text-6xl font-bold text-center">
+    <div className="space-y-2 sm:space-y-4">
+      <div className="text-4xl sm:text-6xl font-bold text-center">
         {isMedicalTime ? formatTime(medicalTimeLeft) : 
          isBreakTime ? formatTime(breakTime) : 
          formatTime(timeLeft)}
       </div>
-      <div className="flex justify-center space-x-2">
-        <Button color={isRunning ? "warning" : "success"} onPress={toggleTimer}>
+      <div className="flex flex-wrap justify-center gap-2">
+        <Button size="sm" color={isRunning ? "warning" : "success"} onPress={toggleTimer}>
           <Icon icon={isRunning ? "lucide:pause" : "lucide:play"} className="mr-1" />
           {isRunning ? "Pausar" : "Iniciar"}
         </Button>
-        <Button color="danger" onPress={resetTimer}>
+        <Button size="sm" color="danger" onPress={resetTimer}>
           <Icon icon="lucide:refresh-cw" className="mr-1" />
           Reiniciar
         </Button>
-        <Button color={isMedicalTime ? "warning" : "primary"} onPress={toggleMedicalTime}>
+        <Button size="sm" color={isMedicalTime ? "warning" : "primary"} onPress={toggleMedicalTime}>
           <Icon icon="lucide:first-aid-kit" className="mr-1" />
           {isMedicalTime ? "Fin T. Médico" : "T. Médico"}
         </Button>
-        <Button color="secondary" onPress={startBreakTime}>
+        <Button size="sm" color="secondary" onPress={startBreakTime}>
           <Icon icon="lucide:coffee" className="mr-1" />
           Descanso
         </Button>
       </div>
-      <div className="flex items-center justify-center space-x-2">
-        <label htmlFor="roundTime" className="text-sm font-medium">
-          Tiempo de Round (segundos):
-        </label>
-        <Input
-          id="roundTime"
-          type="number"
-          value={roundTime}
-          onChange={(e) => setRoundTime(parseInt(e.target.value))}
-          className="w-20"
-        />
-      </div>
-      <div className="flex items-center justify-center space-x-2">
-        <label htmlFor="medicalTime" className="text-sm font-medium">
-          Tiempo Médico (segundos):
-        </label>
-        <Input
-          id="medicalTime"
-          type="number"
-          value={medicalTime}
-          onChange={(e) => setMedicalTime(parseInt(e.target.value))}
-          className="w-20"
-        />
-      </div>
-      <div className="flex items-center justify-center space-x-2">
-        <label htmlFor="breakTime" className="text-sm font-medium">
-          Tiempo de Descanso (segundos):
-        </label>
-        <Input
-          id="breakTime"
-          type="number"
-          value={breakTimeConfig}
-          onChange={(e) => setBreakTimeConfig(parseInt(e.target.value))}
-          className="w-20"
-        />
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+        <div className="flex items-center space-x-2">
+          <label htmlFor="roundTime" className="text-xs sm:text-sm font-medium">
+            Tiempo de Round (s):
+          </label>
+          <Input
+            id="roundTime"
+            type="number"
+            value={roundTime}
+            onChange={(e) => setRoundTime(parseInt(e.target.value))}
+            className="w-16 sm:w-20"
+          />
+        </div>
+        <div className="flex items-center space-x-2">
+          <label htmlFor="medicalTime" className="text-xs sm:text-sm font-medium">
+            Tiempo Médico (s):
+          </label>
+          <Input
+            id="medicalTime"
+            type="number"
+            value={medicalTime}
+            onChange={(e) => setMedicalTime(parseInt(e.target.value))}
+            className="w-16 sm:w-20"
+          />
+        </div>
+        <div className="flex items-center space-x-2">
+          <label htmlFor="breakTime" className="text-xs sm:text-sm font-medium">
+            Tiempo de Descanso (s):
+          </label>
+          <Input
+            id="breakTime"
+            type="number"
+            value={breakTimeConfig}
+            onChange={(e) => setBreakTimeConfig(parseInt(e.target.value))}
+            className="w-16 sm:w-20"
+          />
+        </div>
       </div>
     </div>
   );

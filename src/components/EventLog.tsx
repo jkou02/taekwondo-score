@@ -20,10 +20,10 @@ const EventLog: React.FC = () => {
   }, []);
 
   return (
-    <div className="h-64 overflow-y-auto">
+    <div className="h-48 sm:h-64 overflow-y-auto">
       {events.map((event) => (
-        <div key={event.id} className="mb-2 p-2 bg-content2 rounded">
-          <span className="text-sm text-foreground-500">
+        <div key={event.id} className="mb-2 p-2 bg-content2 rounded text-sm sm:text-base">
+          <span className="text-xs sm:text-sm text-foreground-500">
             {event.timestamp.toLocaleTimeString()}
           </span>
           <p className="text-foreground">{event.message}</p>
